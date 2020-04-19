@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+function game(){
+
+    i = 0;
+    computerScore = 0;
+    draw = 0;
+    playerScore=0;
+    round =1;
+   
+    while (i < 5){
+    var rock = "rock";
+    var paper = "paper";
+    var scissors = "scissors";
+    var playerSelection = prompt("Please enter: ");
+    playerSelection = playerSelection.toLowerCase();
+
+   
+const computerSelection = computerPlay();
+       
+function computerPlay(){
+   
+   
+    result = Math.random();
+   
+    if (result > 0.66){
+        return rock;
+    } else if (result < 0.33){
+        return paper;
+    } else {
+        return scissors;
+    }
+   
+}
+
+       
+console.log("Round: " + round);    
+console.log("Computer: " + computerSelection.charAt(0).toUpperCase()+computerSelection.slice(1));
+console.log("Your Selection: " + playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1));
+       
+ 
+        if (playerSelection == computerSelection){
+            draw = draw + 1;
+            console.log("Draw");
+            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
+        } else if ( playerSelection == rock && computerSelection == paper){
+            computerScore = computerScore + 1;
+            console.log("You lose this round")
+            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
+            i++;
+        } else if (playerSelection == rock && computerSelection == scissors){
+            playerScore = playerScore + 1
+            console.log("You win this round")
+            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
+            i++;
+        }  else if ( playerSelection == paper && computerSelection == rock){
+            console.log("You win this round")
+            playerScore = playerScore + 1;
+            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
+            i++;
+        } else if (playerSelection == paper && computerSelection == scissors){
+            computerScore = computerScore +1;
+            console.log("You lose this round")
+            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
+            i++;
+        }  else if (playerSelection == scissors && computerSelection == paper){
+            console.log("You win this round")
+            playerScore = playerScore +1;
+            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
+            i++;
+        } else if (playerSelection == scissors && computerSelection == rock){
+            computerScore = computerScore +1;;
+            console.log("Draw")
+            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
+            i++;
+        } else {
+            alert("Something went horribly wrong");
+        }
+           
+           console.log("");    
+          round++;
+}
+}
+</script>
+</html>
