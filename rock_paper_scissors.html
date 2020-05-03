@@ -17,7 +17,7 @@
                  </div>
                  <div id="result-message">
                     <img src="white.PNG" id="player-selection"></img>
-                    <div id="result-text">Lets Play Bitch</div>
+                    <div id="result-text">Lets Play A Game</div>
                     <img src="white.PNG" id="computer-selection"></img>
                 </div>     
             </div>
@@ -76,8 +76,6 @@ const computerSelectionImage = document.getElementById("computer-selection");
     } else{
         computerSelectionImage.src = "scissors.png";
 };
-      
-  
         if (computerSelection == playerSelection){
             var result = document.getElementById("result-text");
             result.innerHTML = "Draw";
