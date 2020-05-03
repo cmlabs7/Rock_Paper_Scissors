@@ -116,7 +116,7 @@ const computerSelectionImage = document.getElementById("computer-selection");
             document.getElementById("player-score").innerHTML = "Player: " + playerScore;
             round++;
             document.getElementById("round").innerHTML = "Round " + round;
-        } else if (computerSelection == "rock" && playerSelection == "paper") {
+        } else if (computerSelection == "rock" && playerSelection == "scissors") {
             computerScore++;
             var result = document.getElementById("result-text");
             result.innerHTML = "You lose this round"
@@ -126,8 +126,16 @@ const computerSelectionImage = document.getElementById("computer-selection");
             alert("Something went horribly wrong");  
         };    
         if (playerScore == 5) {
+            playerScore = 0;
+            computerScore = 0;
+            document.getElementById("computer-score").innerHTML = "Opponent: " + computerScore;
+            document.getElementById("player-score").innerHTML = "Player: " + playerScore;
             alert("You Win!");
         } else if (computerScore == 5){
+            playerScore = 0;
+            computerScore = 0;
+            document.getElementById("computer-score").innerHTML = "Opponent: " + computerScore;
+            document.getElementById("player-score").innerHTML = "Player: " + playerScore;
             alert("You Lost!");
         };
     
