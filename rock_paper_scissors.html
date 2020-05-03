@@ -1,87 +1,139 @@
 <!DOCTYPE html>
 <html>
+    <body>
+    <head>
+    <link rel="stylesheet" href="game.css">
+    </head>
+    <main>
+        <div id="header">
+            <h1>Rock Paper Scissors</h1>
+        </div>
+        <div id="option-wrapper">
+             <div id="result-window">
+                <div class="stats">
+                    <div id="player-score">Player: 0</div>
+                    <div id="round"></div>
+                    <div id="computer-score">Opponent: 0</div>
+                 </div>
+                 <div id="result-message">
+                    <img src="white.PNG" id="player-selection"></img>
+                    <div id="result-text">Lets Play Bitch</div>
+                    <img src="white.PNG" id="computer-selection"></img>
+                </div>     
+            </div>
+        </div>    
+        <div id="option-window">
+            <button id="rock" class="choice">Rock</button> 
+            <button id="paper" class="choice">Paper</button>
+            <button id="scissors" class="choice">Scissors</button>   
+        </div>
+    </main>
+    </body>
 <script>
 
-function game(){
-
-    i = 0;
+const choice = document.querySelectorAll("button");
+choice.forEach((button) => { 
+    button.addEventListener("click", (e) => {
+        var playerSelection = button.id;
+        playRound(playerSelection);
+    });   
+});
+    
     computerScore = 0;
-    draw = 0;
     playerScore=0;
-    round =1;
-   
-    while (i < 5){
-    var rock = "rock";
-    var paper = "paper";
-    var scissors = "scissors";
-    var playerSelection = prompt("Please enter: ");
-    playerSelection = playerSelection.toLowerCase();
+    round = 0;
 
-   
+function playRound(playerSelection){    
+    
 const computerSelection = computerPlay();
-       
-function computerPlay(){
-   
+function computerPlay(){   
    
     result = Math.random();
-   
+    
     if (result > 0.66){
-        return rock;
+        return "rock";
     } else if (result < 0.33){
-        return paper;
+        return "paper";
     } else {
-        return scissors;
+        return "scissors";
     }
-   
+    
 }
+const playerSelectionImage = document.getElementById("player-selection");
+if (playerSelection == "rock"){
+    playerSelectionImage .src = "rock.png";
+    } else if (playerSelection == "paper"){
+        playerSelectionImage .src = "paper.png";
+    } else{
+        playerSelectionImage .src = "scissors.png";
+};
 
-       
-console.log("Round: " + round);    
-console.log("Computer: " + computerSelection.charAt(0).toUpperCase()+computerSelection.slice(1));
-console.log("Your Selection: " + playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1));
-       
- 
-        if (playerSelection == computerSelection){
-            draw = draw + 1;
-            console.log("Draw");
-            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
-        } else if ( playerSelection == rock && computerSelection == paper){
-            computerScore = computerScore + 1;
-            console.log("You lose this round")
-            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
-            i++;
-        } else if (playerSelection == rock && computerSelection == scissors){
-            playerScore = playerScore + 1
-            console.log("You win this round")
-            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
-            i++;
-        }  else if ( playerSelection == paper && computerSelection == rock){
-            console.log("You win this round")
-            playerScore = playerScore + 1;
-            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
-            i++;
-        } else if (playerSelection == paper && computerSelection == scissors){
-            computerScore = computerScore +1;
-            console.log("You lose this round")
-            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
-            i++;
-        }  else if (playerSelection == scissors && computerSelection == paper){
-            console.log("You win this round")
-            playerScore = playerScore +1;
-            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
-            i++;
-        } else if (playerSelection == scissors && computerSelection == rock){
-            computerScore = computerScore +1;;
-            console.log("Draw")
-            console.log("Score: " + playerScore + "    Computer Score: " + computerScore + "    Draw: " + draw);
-            i++;
+const computerSelectionImage = document.getElementById("computer-selection");
+    if (computerSelection == "rock"){
+        computerSelectionImage.src = "rock.png";
+    } else if (computerSelection == "paper"){
+        computerSelectionImage.src = "paper.png";
+    } else{
+        computerSelectionImage.src = "scissors.png";
+};
+      
+  
+        if (computerSelection == playerSelection){
+            var result = document.getElementById("result-text");
+            result.innerHTML = "Draw";
+            round++;
+            document.getElementById("round").innerHTML = "Round " + round;
+           } else if (computerSelection == "paper" && playerSelection == "rock"){
+            computerScore ++; 
+            var result = document.getElementById("result-text");
+            result.innerHTML = "You lose this round";
+            document.getElementById("computer-score").innerHTML = "Opponent: " + computerScore;
+            round++;
+            document.getElementById("round").innerHTML = "Round " + round;
+        } else if (computerSelection == "paper" && playerSelection == "scissors"){
+            playerScore++;
+            var result = document.getElementById("result-text");
+            result.innerHTML = "You win this round";
+            document.getElementById("player-score").innerHTML = "Player: " + playerScore;  
+            round++;
+            document.getElementById("round").innerHTML = "Round " + round;
+        } else if (computerSelection == "scissors" && playerSelection == "rock"){
+            playerScore++;
+            var result = document.getElementById("result-text");
+            result.innerHTML = "You win this round";
+            document.getElementById("player-score").innerHTML = "Opponent: " + playerScore;
+            round++;
+            document.getElementById("round").innerHTML = "Round " + round;
+        } else if (computerSelection == "scissors" && playerSelection == "paper"){
+            computerScore++;
+            var result = document.getElementById("result-text");
+            result.innerHTML = "You lose this round";
+            document.getElementById("computer-score").innerHTML = "Opponent: " + computerScore;
+            round++;
+            document.getElementById("round").innerHTML = "Round " + round;
+        } else if (computerSelection == "rock" && playerSelection == "paper"){
+            playerScore++;
+            var result = document.getElementById("result-text");
+            result.innerHTML = "You win this round";
+            document.getElementById("player-score").innerHTML = "Player: " + playerScore;
+            round++;
+            document.getElementById("round").innerHTML = "Round " + round;
+        } else if (computerSelection == "rock" && playerSelection == "paper") {
+            computerScore++;
+            var result = document.getElementById("result-text");
+            result.innerHTML = "You lose this round"
+            document.getElementById("computer-score").innerHTML = "Opponent: " + computerScore;
+            round++;
         } else {
-            alert("Something went horribly wrong");
-        }
-           
-           console.log("");    
-          round++;
-}
-}
+            alert("Something went horribly wrong");  
+        };    
+        if (playerScore == 5) {
+            alert("You Win!");
+        } else if (computerScore == 5){
+            alert("You Lost!");
+        };
+    
+};
+
 </script>
 </html>

@@ -1,0 +1,83 @@
+body{
+    font-family:  sans-serif;
+}
+
+main{
+    display: fixed;
+}
+#header {
+    display: flex;
+    justify-content: center;
+}
+
+#option-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+#result-window{
+    margin-top: 20px;
+    height: 50vh;
+    width: 50vh;
+    border: thin solid #000;
+}
+
+.stats{
+    display:flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+#result-message{
+    display:flex;
+    height: 40vh;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#computer-score{
+    padding-right: 30px;
+}
+#result-text{
+    color: blue;
+  
+}
+#option-window{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    background-repeat: no-repeat;
+    height:30%;
+    width: 30%;
+    border: white;
+}
+button{
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 30px;
+    border: thin solid #000;
+    transition-duration: 0.2s;
+    width: 100px;
+    height: 4vh;
+    
+}
+button:hover{
+    background-color: #99ddff;
+    color: white;
+    border: thin solid #99ddff;
+}
+
+
+#player-selection{
+color: purple;
+}
+
+#computer-selection{
+color: purple;
+}
