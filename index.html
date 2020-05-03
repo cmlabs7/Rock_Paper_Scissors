@@ -128,12 +128,14 @@ const computerSelectionImage = document.getElementById("computer-selection");
         if (playerScore == 5) {
             playerScore = 0;
             computerScore = 0;
+            round = 0;
             document.getElementById("computer-score").innerHTML = "Opponent: " + computerScore;
             document.getElementById("player-score").innerHTML = "Player: " + playerScore;
             alert("You Win!");
         } else if (computerScore == 5){
             playerScore = 0;
             computerScore = 0;
+            round = 0;
             document.getElementById("computer-score").innerHTML = "Opponent: " + computerScore;
             document.getElementById("player-score").innerHTML = "Player: " + playerScore;
             alert("You Lost!");
